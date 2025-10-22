@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0hpap44mtajy"]
+
+[ext_resource type="Texture2D" uid="uid://bdtgxpvew52au" path="res://images/aaa.png" id="1_v7oki"]
+
+[sub_resource type="GDScript" id="GDScript_v8qja"]
+script/source = "extends Area2D
+
+
+var velocity
+var speed = 1000
+var direction := Input.get_axis(\"ui_left\", \"ui_right\")
+var diro := Input.get_axis(\"ui_up\", \"ui_down\")
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
+
+func _physics_process(delta: float) -> void:
+	var input_vector = Vector2.ZERO
+	if Input.is_action_pressed(\"ui_up\"):
+		input_vector.y = -1
+		position.y += 3000 * diro *delta
+	if Input.is_action_pressed(\"ui_down\"):
+		input_vector.y += 1
+		position.y += 3000 * diro *delta
+	if Input.is_action_pressed(\"ui_left\"):
+		input_vector.x = -1
+		position.x += 3000 * direction*delta
+	if Input.is_action_pressed(\"ui_right\"):
+		input_vector.x += 1
+		position.x += 3000 * direction*delta
+	
+		
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v7oki"]
+radius = 40.0
+height = 90.0
+
+[node name="Bullet" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = SubResource("GDScript_v8qja")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+z_index = 4096
+position = Vector2(0, 1)
+scale = Vector2(0.2421875, 0.2734375)
+texture = ExtResource("1_v7oki")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_v7oki")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Area2D"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D/CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_v7oki")
