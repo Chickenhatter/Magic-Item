@@ -6,4 +6,4 @@ This game is called Magic item because why not
 This Project should not contain any AI
 There is probably no Lore
 A youtube video that helped me make the fireballs : https://www.youtube.com/watch?v=YPvPqOqbx-I
-Video of game working:    https://drive.google.com/file/d/1-SeyJ8l5sCTKH1OIBx95jC8bGrUNvMzz/view?usp=drive_link
+Video of game working Only showing the parts that seemed to not work for others:    https://drive.google.com/file/d/1-SeyJ8l5sCTKH1OIBx95jC8bGrUNvMzz/view?usp=drive_link
